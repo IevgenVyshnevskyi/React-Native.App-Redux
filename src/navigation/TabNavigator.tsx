@@ -1,25 +1,27 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AboutUsScreen from '../screens/AboutUsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import NewsScreen from '../screens/NewsScreen';
 import { Text } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator 
+    <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+
         tabBarActiveTintColor: '#2196F3',
-        tabBarInactiveTintColor: 'gray',
+
         tabBarIcon: ({ color, size }) => {
           let icon;
-          if (route.name === 'AboutUsTab') {
-            icon = '🎓';
-          } else if (route.name === 'ProfileTab') {
-            icon = '👤';
-          }
-          return <Text style={{ fontSize: size, color: color }}>{icon}</Text>;
+
+          if (route.name === 'AboutUsTab') icon = '🎓';
+          else if (route.name === 'ProfileTab') icon = '👤';
+          else if (route.name === 'NewsTab') icon = '📰';
+
+          return <Text style={{ fontSize: size, color }}>{icon}</Text>;
         },
       })}
     >
@@ -28,6 +30,13 @@ const TabNavigator = () => {
         component={AboutUsScreen}
         options={{ title: 'Про кафедру' }}
       />
+
+      <Tab.Screen
+        name="NewsTab"
+        component={NewsScreen}
+        options={{ title: 'Новини' }}
+      />
+
       <Tab.Screen
         name="ProfileTab"
         component={ProfileScreen}
@@ -35,6 +44,6 @@ const TabNavigator = () => {
       />
     </Tab.Navigator>
   );
-}
+};
 
 export default TabNavigator;

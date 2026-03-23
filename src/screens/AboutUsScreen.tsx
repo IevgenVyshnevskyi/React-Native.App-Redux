@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text, Linking, TouchableOpacity } from 'react-native';
 import { styles } from '../theme/styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
