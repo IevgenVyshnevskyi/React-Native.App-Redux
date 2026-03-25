@@ -7,7 +7,7 @@ import { useSelector } from '../store';
 import { setNews, setLoading } from '../store/newsSlice';
 import { styles } from '../theme/styles';
 
-const API_KEY = 'MY_API_KEY';
+const API_KEY = 'b87f2a82cb4942eba563eaeb78ab7ac3';
 
 function NewsScreen() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function NewsScreen() {
       dispatch(setLoading(true));
       try {
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=ua&apiKey=${API_KEY}`,
+          `https://newsapi.org/v2/everything?q=Apple&from=2026-03-25&sortBy=popularity&apiKey=${API_KEY}`,
         );
         dispatch(setNews(response.data.articles));
       } catch (error) {
